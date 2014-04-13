@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471546A118F83F5B009C1493 /* FrameTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4715469F18F83F5B009C1493 /* FrameTable.cpp */; };
+		471546A418F85645009C1493 /* MemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 471546A218F85645009C1493 /* MemManager.cpp */; };
 		47C9F7B118F1C47000724458 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47C9F7B018F1C47000724458 /* main.cpp */; };
 		47C9F7B318F1C47000724458 /* MMU.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47C9F7B218F1C47000724458 /* MMU.1 */; };
+		47C9F7C318F3716500724458 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = 47C9F7C218F3716500724458 /* makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +28,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4715469F18F83F5B009C1493 /* FrameTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameTable.cpp; sourceTree = "<group>"; };
+		471546A018F83F5B009C1493 /* FrameTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameTable.h; sourceTree = "<group>"; };
+		471546A218F85645009C1493 /* MemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemManager.cpp; sourceTree = "<group>"; };
+		471546A318F85645009C1493 /* MemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemManager.h; sourceTree = "<group>"; };
+		47160BDF18F4FCDD005441A4 /* RandomNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomNum.h; sourceTree = "<group>"; };
+		47160BE118F6F7C0005441A4 /* BitHacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitHacks.h; sourceTree = "<group>"; };
+		47160BE318F727CF005441A4 /* PageTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageTable.h; sourceTree = "<group>"; };
+		475142F418F9E61F0089BC3F /* Printer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Printer.h; sourceTree = "<group>"; };
 		47C9F7AD18F1C47000724458 /* MMU */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MMU; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C9F7B018F1C47000724458 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		47C9F7B218F1C47000724458 /* MMU.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MMU.1; sourceTree = "<group>"; };
+		47C9F7C018F32E3200724458 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		47C9F7C218F3716500724458 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +74,16 @@
 			isa = PBXGroup;
 			children = (
 				47C9F7B018F1C47000724458 /* main.cpp */,
+				47160BE318F727CF005441A4 /* PageTable.h */,
+				471546A018F83F5B009C1493 /* FrameTable.h */,
+				4715469F18F83F5B009C1493 /* FrameTable.cpp */,
+				471546A318F85645009C1493 /* MemManager.h */,
+				471546A218F85645009C1493 /* MemManager.cpp */,
+				47C9F7C018F32E3200724458 /* Config.h */,
+				47160BDF18F4FCDD005441A4 /* RandomNum.h */,
+				475142F418F9E61F0089BC3F /* Printer.h */,
+				47160BE118F6F7C0005441A4 /* BitHacks.h */,
+				47C9F7C218F3716500724458 /* makefile */,
 				47C9F7B218F1C47000724458 /* MMU.1 */,
 			);
 			path = MMU;
@@ -117,7 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				471546A418F85645009C1493 /* MemManager.cpp in Sources */,
 				47C9F7B118F1C47000724458 /* main.cpp in Sources */,
+				471546A118F83F5B009C1493 /* FrameTable.cpp in Sources */,
+				47C9F7C318F3716500724458 /* makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +253,7 @@
 				47C9F7B818F1C47000724458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
