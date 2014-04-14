@@ -13,7 +13,7 @@
 #include "MemManager.h"
 #include "Config.h"
 
-MemManager::MemManager(FrameTable frameTable){
+MemManager::MemManager(FrameTable *frameTable){
     this->frameTable = frameTable;
     this->instr_count = 0;
     this->unmaps = 0;
@@ -47,11 +47,11 @@ void MemManager::start(string inputfile){
         
         execute(readWrite, pageIndex);
         this->instr_count++;
-        this->frameTable.record(pageIndex);
+        this->frameTable->record(pageIndex);
     }
     file.close();
     if(optionP) printer.printPageTable();
-    if(optionF) frameTable.printFTable();
+    if(optionF) frameTable->printFrameTable();
     if(optionS) printSum();
 }
 
@@ -78,8 +78,8 @@ void MemManager::execute(int readWrite, int pageIndex){
 	if(!pageTable.isPresent(pageIndex)){
 		int frameIndex;
         
-		if(frameTable.hasFreeFrame()){
-			frameIndex = frameTable.getFreeFrame();
+		if(frameTable->hasFreeFrame()){
+			frameIndex = frameTable->getFreeFrame();
 			if(!pageTable.isPageout(pageIndex)){
 				if(optionO) printer.printZero(instr_count, frameIndex);
 				this->zeros++;
@@ -89,7 +89,7 @@ void MemManager::execute(int readWrite, int pageIndex){
 				this->ins++;
 			}
             
-			frameTable.setPageIndex(frameIndex, pageIndex);
+			frameTable->setPageIndex(frameIndex, pageIndex);
 			pageTable.setFrameNum(pageIndex, frameIndex);
 			if(optionO) printer.printMap(instr_count, pageIndex, frameIndex);
 			this->maps++;
@@ -101,10 +101,10 @@ void MemManager::execute(int readWrite, int pageIndex){
 		}
         
         else{
-
-			frameIndex = frameTable.getFrame();
-			int oldPageIndex = frameTable.getPageIndex(frameIndex);
-            
+            // the next line cause a segfault:
+			frameIndex = frameTable->getFrame();
+            //cout << "-> "<< frameIndex << endl;
+			int oldPageIndex = frameTable->getPageIndex(frameIndex);
 			if(optionO) printer.printUnMap(instr_count, oldPageIndex, frameIndex);
 			this->unmaps++;
             
@@ -126,7 +126,7 @@ void MemManager::execute(int readWrite, int pageIndex){
 				if(optionO) printer.printIn(instr_count, pageIndex, frameIndex);
 				this->ins++;
 			}
-			frameTable.setPageIndex(frameIndex, pageIndex);
+			frameTable->setPageIndex(frameIndex, pageIndex);
 			pageTable.setFrameNum(pageIndex, frameIndex);
 			if(optionO) printer.printMap(instr_count, pageIndex, frameIndex);
 			this->maps++;

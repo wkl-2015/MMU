@@ -75,34 +75,34 @@ int main(int argc, char ** argv)
     }
     
     // Run page replacement algorithm
-    FrameTable frameTable = FrameTable();
+    FrameTable *frameTable = new FrameTable();
     switch (algo[0]) {
         case 'N':
-            frameTable = NRUFrame();
+            frameTable = new NRUFrame();
             break;
         case 'l':
-            frameTable = LRUFrame();
+            frameTable = new LRUFrame();
             break;
         case 'r':
-            frameTable = RandomFrame();
+            frameTable = new RandomFrame();
             break;
         case 'f':
-            frameTable = FIFOFrame();
+            frameTable = new FIFOFrame();
             break;
         case 's':
-            frameTable = SCFrame();
+            frameTable = new SCFrame();
             break;
         case 'c':
-            frameTable = clockFrame();
+            frameTable = new clockFrame();
             break;
         case 'C':
-            frameTable = ClockFrame();
+            frameTable = new ClockFrame();
             break;
         case 'a':
-            frameTable = agingFrame();
+            frameTable = new agingFrame();
             break;
         case 'A':
-            frameTable = AgingFrame();
+            frameTable = new AgingFrame();
             break;
         default:
             printf("Unknown page replacement algorithm: %s. \n", algo);

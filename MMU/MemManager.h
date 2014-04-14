@@ -16,7 +16,7 @@ using namespace std;
 
 class MemManager{
 private:
-    FrameTable frameTable;
+    FrameTable *frameTable;
     int instr_count;
     int unmaps;
     int maps;
@@ -26,7 +26,7 @@ private:
     long long cycles;
     Printer printer;
 public:
-    MemManager(FrameTable frameTable);
+    MemManager(FrameTable *frameTable);
     void start(string inputfile);
     void execute(int readWrite, int pageIndex);
     void printSum();

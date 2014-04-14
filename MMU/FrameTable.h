@@ -10,7 +10,14 @@
 #define __MMU__FrameTable__
 
 #include <iostream>
+#include <list>
+#include <queue>
 using namespace std;
+
+struct Node {
+    int index;
+    Node* next;
+};
 
 // A frame table is an array consists of page indexes.
 
@@ -26,7 +33,7 @@ public:
     virtual bool hasFreeFrame();
     virtual int getFreeFrame();
     virtual int getFrame(){return -1;}
-    virtual void printFTable();
+    virtual void printFrameTable();
     virtual void record(int pageIndex){}
     virtual void show(){}
 };
@@ -40,8 +47,11 @@ public:
 };
 
 class LRUFrame : public FrameTable{
+private:
+    list<int> myList;
 public:
-    LRUFrame();
+    void record(int pageIndex);
+    int getFrame();
 };
 
 class RandomFrame : public FrameTable{
@@ -50,33 +60,66 @@ public:
 };
 
 class FIFOFrame : public FrameTable{
+private:
+    bool hasReplace;
+    queue<int> myQ; //FIFO queue for frame index
 public:
-    FIFOFrame();
+    FIFOFrame(){this->hasReplace = false;}
+    int getFreeFrame();
+    void record(int pageIndex);
+    int getFrame();
 };
 
 class SCFrame : public FrameTable{
+private:
+    bool hasReplace;
+    queue<int> myQ;
 public:
-    SCFrame();
+    SCFrame(){this->hasReplace = false;}
+    int getFreeFrame();
+    void record(int pageIndex);
+    int getFrame();
 };
 
 class clockFrame : public FrameTable{
+private:
+    bool hasReplace;
+    Node* clockHand;
+    Node* runner;
 public:
     clockFrame();
+    void record(int pageIndex);
+    int getFreeFrame();
+    int getFrame();
 };
 
 class ClockFrame : public FrameTable{
+private:
+    Node* clockHand;
+    Node* runner;
 public:
     ClockFrame();
+    int getFrame();
 };
 
 class agingFrame : public FrameTable{
+private:
+    unsigned int* ages;
+    bool hasReplace;
 public:
     agingFrame();
+    void record(int pageIndex);
+    int getFrame();
 };
 
 class AgingFrame : public FrameTable{
+private:
+    unsigned int* ages;
+    bool hasReplace;
 public:
     AgingFrame();
+    int getFrame();
+    void record(int pageIndex);
 };
 
 
